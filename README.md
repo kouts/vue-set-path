@@ -1,6 +1,6 @@
 # vue-set-path <a href="https://npm.im/vue-set-path"><img src="https://badgen.net/npm/v/vue-set-path"></a> <a href="https://npm.im/vue-set-path"><img src="https://badgen.net/npm/dm/vue-set-path"></a> ![](https://img.badgesize.io/kouts/vue-set-path/main/dist/umd/vueSetPath.js.svg) ![](https://img.badgesize.io/kouts/vue-set-path/main/dist/umd/vueSetPath.js.svg?compression=gzip)
 
-Set Vue reactive properties on a object, using dot notation path syntax
+Set Vue reactive properties on an object, using dot notation path syntax
 
 ## Install
 ```sh
@@ -21,6 +21,6 @@ setMany(obj, {
   'foo.bar.baz', 'New value',
   'qux': 'Another value'
 })
-// The same as setOne but uses an object map to set multiple properties
+// The same as setOne, but uses an object map to set multiple properties
 
 ```
