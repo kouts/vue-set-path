@@ -1,3 +1,3 @@
 module.exports = {
-  '*.{js,vue}': ['npm run lint']
+  '*.{js,vue}': ['npm run lint-fix', 'git add']
 }
