@@ -39,7 +39,7 @@ Non-existent paths will be be initialized automatically.
 
 - `setOne(object, path, value)`
 
-#### Arguments
+#### Parameters
 
 - `object (Object | Array)`: The data object/array that we're changing.
 - `path (string)`: The path of the data we're changing, e.g.
@@ -55,9 +55,9 @@ Sets one or many a reactive values by using either `path, value` or a map of `pa
 #### Syntax
 
 - `setMany(object, path, value)`
-- `setMany(map)`
+- `setMany(object, map)`
 
-#### Arguments
+#### Parameters
 
 - `object (Object | Array)`: The data object/array that we're changing.
 - `path (string)`: The path of the data we're changing, e.g.
