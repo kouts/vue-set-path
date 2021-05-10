@@ -3,24 +3,66 @@
 Set Vue reactive properties on an object, using dot notation path syntax
 
 ## Install
+
 ```sh
 npm install vue-set-path
 ```
 
-## Use
+## Example
+
 ```js
+import Vue from 'vue'
 import { setOne, setMany } from 'vue-set-path'
 
-const obj = {}
+const obj = Vue.observable({})
 
 setOne(obj, 'foo.bar.baz', 'New value')
 // This will set obj.foo.bar.baz = 'New value'
-// Intermediate objects are automatically created
+// If intermediate objects don't exist they will get automatically created
 
 setMany(obj, {
   'foo.bar.baz', 'New value',
   'qux': 'Another value'
 })
-// The same as setOne, but uses an object map to set multiple properties
+// The same as setOne, but uses a map of path/values to set multiple properties
 
 ```
+
+## API
+
+### setOne
+
+Sets a reactive value on a property of an object or the element of an array.  
+Non-existent paths will be be initialized automatically.
+
+#### Syntax
+
+- `setOne(object, path, value)`
+
+#### Arguments
+
+- `object (Object | Array)`: The data object/array that we're changing.
+- `path (string)`: The path of the data we're changing, e.g.
+  - user
+  - user.name
+  - user.friends[1] or user.friends.1
+- `value (any)`: The value we're changing it to. Can be a primitive or an object (or array).
+
+### setMany
+
+Sets one or many a reactive values by using either `path, value` or a map of `path: value` pairs.
+
+#### Syntax
+
+- `setMany(object, path, value)`
+- `setMany(map)`
+
+#### Arguments
+
+- `object (Object | Array)`: The data object/array that we're changing.
+- `path (string)`: The path of the data we're changing, e.g.
+  - user
+  - user.name
+  - user.friends[1] or user.friends.1
+- `value (any)`: The value we're changing it to. Can be a primitive or an object (or array).
+- `map (object)`: A map of keypath: value pairs, as above.
