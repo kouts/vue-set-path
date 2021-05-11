@@ -1,3 +1,10 @@
+## [1.1.1](https://github.com/kouts/vue-set-path/compare/v1.1.0...v1.1.1) (2021-05-11)
+
+
+### Bug Fixes
+
+* added delete methods to export ([4288858](https://github.com/kouts/vue-set-path/commit/4288858f709e16abab0aca9f6edccb58b01a2649))
+
 # [1.1.0](https://github.com/kouts/vue-set-path/compare/v1.0.0...v1.1.0) (2021-05-11)
 
 
