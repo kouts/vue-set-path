@@ -48,6 +48,20 @@
 
     return result;
   }
+  function getByPath(obj, path) {
+    var parts = isArray(path) ? path : splitPath(path);
+    var length = parts.length;
+
+    for (var i = 0; i < length; i++) {
+      if (typeof obj[parts[i]] === 'undefined') {
+        return undefined;
+      }
+
+      obj = obj[parts[i]];
+    }
+
+    return obj;
+  }
 
   var setOne = function setOne(obj, pathStr, value) {
     var path = splitPath(pathStr);
@@ -101,7 +115,25 @@
       throw Error('Arguments must be either string or object.');
     }
   };
+  var deleteOne = function deleteOne(obj, pathStr) {
+    var path = splitPath(pathStr);
+    var prop = path.pop();
+    Vue__default['default']["delete"](getByPath(obj, path), prop);
+  };
+  var deleteMany = function deleteMany(obj, path) {
+    if (typeof path === 'string') {
+      deleteOne(obj, path);
+    } else if (isArray(path)) {
+      path.forEach(function (item) {
+        deleteOne(obj, item);
+      });
+    } else {
+      throw Error('Arguments must be either string or array.');
+    }
+  };
 
+  exports.deleteMany = deleteMany;
+  exports.deleteOne = deleteOne;
   exports.setMany = setMany;
   exports.setOne = setOne;
 

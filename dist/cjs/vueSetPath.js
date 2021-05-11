@@ -2,7 +2,7 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
-var utils = require('./utils-918ed378.js');
+var utils = require('./utils-0b104347.js');
 var Vue = require('vue');
 
 function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
@@ -61,6 +61,24 @@ var setMany = function setMany(obj, path, value) {
     throw Error('Arguments must be either string or object.');
   }
 };
+var deleteOne = function deleteOne(obj, pathStr) {
+  var path = utils.splitPath(pathStr);
+  var prop = path.pop();
+  Vue__default['default']["delete"](utils.getByPath(obj, path), prop);
+};
+var deleteMany = function deleteMany(obj, path) {
+  if (typeof path === 'string') {
+    deleteOne(obj, path);
+  } else if (utils.isArray(path)) {
+    path.forEach(function (item) {
+      deleteOne(obj, item);
+    });
+  } else {
+    throw Error('Arguments must be either string or array.');
+  }
+};
 
+exports.deleteMany = deleteMany;
+exports.deleteOne = deleteOne;
 exports.setMany = setMany;
 exports.setOne = setOne;

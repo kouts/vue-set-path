@@ -1,2 +1,2 @@
 export * from './utils'
-export { setOne, setMany } from './vueSetPath'
+export { setOne, setMany, deleteOne, deleteMany } from './vueSetPath'

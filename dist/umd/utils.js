@@ -45,7 +45,7 @@
     return result;
   }
   function getByPath(obj, path) {
-    var parts = splitPath(path);
+    var parts = isArray(path) ? path : splitPath(path);
     var length = parts.length;
 
     for (var i = 0; i < length; i++) {

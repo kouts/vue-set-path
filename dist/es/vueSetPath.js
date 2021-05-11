@@ -1,4 +1,4 @@
-import { s as splitPath, _ as _typeof, b as isArray, a as isNumeric, i as isObject } from './utils-e4affd7a.js';
+import { s as splitPath, _ as _typeof, b as isArray, a as isNumeric, i as isObject, g as getByPath } from './utils-ff326a0a.js';
 import Vue from 'vue';
 
 var setOne = function setOne(obj, pathStr, value) {
@@ -53,5 +53,21 @@ var setMany = function setMany(obj, path, value) {
     throw Error('Arguments must be either string or object.');
   }
 };
+var deleteOne = function deleteOne(obj, pathStr) {
+  var path = splitPath(pathStr);
+  var prop = path.pop();
+  Vue["delete"](getByPath(obj, path), prop);
+};
+var deleteMany = function deleteMany(obj, path) {
+  if (typeof path === 'string') {
+    deleteOne(obj, path);
+  } else if (isArray(path)) {
+    path.forEach(function (item) {
+      deleteOne(obj, item);
+    });
+  } else {
+    throw Error('Arguments must be either string or array.');
+  }
+};
 
-export { setMany, setOne };
+export { deleteMany, deleteOne, setMany, setOne };
