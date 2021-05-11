@@ -1,4 +1,4 @@
-import { setOne, setMany } from '@/vueSetPath'
+import { setOne, setMany, deleteOne, deleteMany } from '@/vueSetPath'
 
 describe('setOne', () => {
   let obj
@@ -108,5 +108,98 @@ describe('setMany', () => {
       setMany(obj, 10)
     }
     expect(fn).toThrow(Error)
+  })
+})
+
+describe('deleteOne', () => {
+  let obj
+  beforeEach(() => {
+    obj = {
+      foo: {
+        bar: {
+          baz: 'test'
+        }
+      },
+      arr: [
+        {
+          name: 'John',
+          age: 21
+        },
+        {
+          name: 'George',
+          age: 22
+        },
+        {
+          name: 'Nick',
+          age: 23
+        }
+      ]
+    }
+  })
+
+  it('deletes an object property', () => {
+    deleteOne(obj, 'foo')
+    expect(obj.foo).toBeUndefined()
+    expect(obj.arr).toBeDefined()
+  })
+
+  it('deletes a deep object property', () => {
+    deleteOne(obj, 'foo.bar.baz')
+    expect(obj.foo.bar.baz).toBeUndefined()
+    expect(obj.foo.bar).toBeDefined()
+    expect(obj.arr).toBeDefined()
+  })
+
+  it('deletes an array item', () => {
+    deleteOne(obj, 'arr.1')
+    expect(obj.arr.length).toBe(2)
+    expect(obj.arr[1]).toEqual({ name: 'Nick', age: 23 })
+  })
+
+  it('deletes an object property inside array item', () => {
+    deleteOne(obj, 'arr[1].age')
+    expect(obj.arr.length).toBe(3)
+    expect(obj.arr[1]).toEqual({ name: 'George' })
+  })
+})
+
+describe('deleteMany', () => {
+  let obj
+  beforeEach(() => {
+    obj = {
+      foo: {
+        bar: {
+          baz: 'test1',
+          biz: 'test2',
+          boz: 'test3'
+        },
+        far: {
+          faz: 'test1'
+        }
+      },
+      arr: [
+        {
+          name: 'John',
+          age: 21
+        },
+        {
+          name: 'George',
+          age: 22
+        },
+        {
+          name: 'Nick',
+          age: 23
+        }
+      ]
+    }
+  })
+
+  it('deletes both object properties and array items', () => {
+    deleteMany(obj, ['foo.bar.baz', 'foo.bar.biz', 'foo.far.faz', 'arr[0]', 'arr[1].name'])
+    expect(obj.foo.bar).toEqual({ boz: 'test3' })
+    expect(obj.foo.far).toEqual({})
+    expect(obj.arr.length).toBe(2)
+    expect(obj.arr[1].name).toBeUndefined()
+    expect(obj.arr[1]).toEqual({ age: 23 })
   })
 })
