@@ -181,4 +181,9 @@ describe('getByPath', () => {
     const res = getByPath(obj, 'foo[nested].personalInfo[address][line1]')
     expect(res).toBe('Westwish St')
   })
+
+  it('works with an array as input', () => {
+    const res = getByPath(obj, ['foo', 'baz', '0', 'qux'])
+    expect(res).toBe('test')
+  })
 })

@@ -1,6 +1,15 @@
 # vue-set-path <a href="https://npm.im/vue-set-path"><img src="https://badgen.net/npm/v/vue-set-path"></a> ![](https://img.badgesize.io/kouts/vue-set-path/main/dist/umd/vueSetPath.min.js.svg) ![](https://img.badgesize.io/kouts/vue-set-path/main/dist/umd/vueSetPath.min.js.svg?compression=gzip)
 
-Set Vue reactive properties on an object, using dot notation path syntax
+> A set of utility methods to update Vue reactive objects, using the dot notation path syntax.
+
+`vue-set-path` methods can be used to `set` and `delete`
+
+- properties of the `data` object in a Vue instance
+- Vuex `state` properties
+- `Vue.observable` properties
+
+All the methods use their `Vue` equivalents ([Vue.set](https://vuejs.org/v2/api/#Vue-set) and [Vue.delete](https://vuejs.org/v2/api/#Vue-delete))
+under the hood, in order to retain reactivity.
 
 ## Install
 
@@ -12,7 +21,7 @@ npm install vue-set-path
 
 ```js
 import Vue from 'vue'
-import { setOne, setMany } from 'vue-set-path'
+import { setOne, setMany, deleteOne, deleteMany } from 'vue-set-path'
 
 const obj = Vue.observable({})
 
@@ -25,6 +34,14 @@ setMany(obj, {
   'qux': 'Another value'
 })
 // The same as setOne, but uses a map of path/values to set multiple properties
+
+
+deleteOne(obj, 'foo.bar.baz')
+// Deletes the foo.bar.baz property
+
+
+deleteMany(obj, ['foo.bar.baz', 'qux'])
+// The same as deleteOne but uses an array of paths to delete many properties at once
 
 ```
 
@@ -50,7 +67,7 @@ Non-existent paths will be be initialized automatically.
 
 ### setMany
 
-Sets one or many a reactive values by using either `path, value` or a map of `path: value` pairs.
+Sets one or many a reactive properties by using either `path, value` or a map of `path: value` pairs.
 
 #### Syntax
 
@@ -65,7 +82,40 @@ Sets one or many a reactive values by using either `path, value` or a map of `pa
   - user.name
   - user.friends[1] or user.friends.1
 - `value (any)`: The value we're changing it to. Can be a primitive or an object (or array).
-- `map (object)`: A map of `path: value` pairs, as above.
+- `map (Object)`: A map of `path: value` pairs, as above.
+
+### deleteOne
+
+Deletes a property of an object or the element of an array.  
+#### Syntax
+
+- `deleteOne(object, path)`
+
+#### Parameters
+
+- `object (Object | Array)`: The data object/array that we're deleting a property from.
+- `path (string)`: The path of the property that we're deleting, e.g.
+  - user
+  - user.name
+  - user.friends[1] or user.friends.1
+
+### deleteMany
+
+Deletes one or many properties and/or array elements by using an array of paths.
+
+#### Syntax
+
+- `deleteMany(object, path)`
+- `deleteMany(object, array)`
+
+#### Parameters
+
+- `object (Object | Array)`: The data object/array that we're deleting properties from.
+- `path (string)`: The path of the property that we're deleting, e.g.
+  - user
+  - user.name
+  - user.friends[1] or user.friends.1
+- `array (Array)`: An array of paths to delete.
 
 ## Browsers support
 

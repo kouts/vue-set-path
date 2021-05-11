@@ -1,5 +1,5 @@
 import Vue from 'vue'
-import { isNumeric, isArray, isObject, splitPath } from './utils.js'
+import { isNumeric, isArray, isObject, splitPath, getByPath } from './utils.js'
 
 export const setOne = (obj, pathStr, value) => {
   const path = splitPath(pathStr)
@@ -50,5 +50,23 @@ export const setMany = (obj, path, value) => {
     }
   } else {
     throw Error('Arguments must be either string or object.')
+  }
+}
+
+export const deleteOne = (obj, pathStr) => {
+  const path = splitPath(pathStr)
+  const prop = path.pop()
+  Vue.delete(getByPath(obj, path), prop)
+}
+
+export const deleteMany = (obj, path) => {
+  if (typeof path === 'string') {
+    deleteOne(obj, path)
+  } else if (isArray(path)) {
+    path.forEach((item) => {
+      deleteOne(obj, item)
+    })
+  } else {
+    throw Error('Arguments must be either string or array.')
   }
 }
