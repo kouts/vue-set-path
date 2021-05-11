@@ -6,18 +6,6 @@
 * added array support to getByPath ([7f48f97](https://github.com/kouts/vue-set-path/commit/7f48f97bbb8eac0d3fe5219f69e98fa243bbe9cb))
 * added deleteOne, deleteMany methods ([e3408cd](https://github.com/kouts/vue-set-path/commit/e3408cdebe3525d5163554cddbf410a3742cbd5e))
 
-
-
-
-
-# [1.1.0](https://github.com/kouts/vue-set-path/compare/v1.0.0...v1.1.0) (2021-05-11)
-
-
-### Features
-
-* added array support to getByPath ([7f48f97](https://github.com/kouts/vue-set-path/commit/7f48f97bbb8eac0d3fe5219f69e98fa243bbe9cb))
-* added deleteOne, deleteMany methods ([e3408cd](https://github.com/kouts/vue-set-path/commit/e3408cdebe3525d5163554cddbf410a3742cbd5e))
-
 # 1.0.0 (2021-05-09)
 
 
