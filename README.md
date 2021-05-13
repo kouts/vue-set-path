@@ -8,8 +8,8 @@
 - Vuex `state` properties
 - `Vue.observable` properties
 
-All the methods use their `Vue` equivalents ([Vue.set](https://vuejs.org/v2/api/#Vue-set) and [Vue.delete](https://vuejs.org/v2/api/#Vue-delete))
-under the hood, in order to retain reactivity.
+All the methods use their `Vue` equivalents ([Vue.set](https://vuejs.org/v2/api/#Vue-set) and
+[Vue.delete](https://vuejs.org/v2/api/#Vue-delete)) under the hood, in order to retain reactivity.
 
 ## Install
 
@@ -26,7 +26,7 @@ import { setOne, setMany, deleteOne, deleteMany } from 'vue-set-path'
 const obj = Vue.observable({})
 
 setOne(obj, 'foo.bar.baz', 'New value')
-// This will set obj.foo.bar.baz = 'New value'
+// This will set obj.foo.bar.baz to 'New value'
 // If intermediate objects don't exist they will get automatically created
 
 setMany(obj, {
@@ -35,13 +35,11 @@ setMany(obj, {
 })
 // The same as setOne, but uses a map of path/values to set multiple properties
 
-
 deleteOne(obj, 'foo.bar.baz')
 // Deletes the foo.bar.baz property
 
-
 deleteMany(obj, ['foo.bar.baz', 'qux'])
-// The same as deleteOne but uses an array of paths to delete many properties at once
+// The same as deleteOne, but uses an array of paths to delete many properties at once
 
 ```
 
@@ -49,7 +47,7 @@ deleteMany(obj, ['foo.bar.baz', 'qux'])
 
 ### setOne
 
-Sets a reactive value on a property of an object or the element of an array.  
+Sets a reactive value on an object property or an array element.  
 Non-existent paths will be be initialized automatically.
 
 #### Syntax
@@ -82,11 +80,12 @@ Sets one or many a reactive properties by using either `path, value` or a map of
   - user.name
   - user.friends[1] or user.friends.1
 - `value (any)`: The value we're changing it to. Can be a primitive or an object (or array).
-- `map (Object)`: A map of `path: value` pairs, as above.
+- `map (Object)`: A map of `path: value` pairs.
 
 ### deleteOne
 
-Deletes a property of an object or the element of an array.  
+Deletes a property of an object or the element of an array.
+
 #### Syntax
 
 - `deleteOne(object, path)`
