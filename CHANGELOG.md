@@ -1,3 +1,10 @@
+## [1.1.2](https://github.com/kouts/vue-set-path/compare/v1.1.1...v1.1.2) (2021-05-13)
+
+
+### Bug Fixes
+
+* minor doc fixes ([3f3b921](https://github.com/kouts/vue-set-path/commit/3f3b92174b9826656af2e915c18cc2c311db38d5))
+
 ## [1.1.1](https://github.com/kouts/vue-set-path/compare/v1.1.0...v1.1.1) (2021-05-11)
 
 
