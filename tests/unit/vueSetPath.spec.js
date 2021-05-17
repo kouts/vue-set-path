@@ -29,6 +29,7 @@ describe('setOne', () => {
 
   it('sets a non-existing deep path that contains an array', () => {
     setOne(obj, 'test.bar.0.baz', 'set')
+    expect(Array.isArray(obj.test.bar)).toBe(true)
     expect(obj.test.bar[0].baz).toBe('set')
   })
 
