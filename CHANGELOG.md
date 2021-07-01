@@ -1,3 +1,10 @@
+## [1.1.3](https://github.com/kouts/vue-set-path/compare/v1.1.2...v1.1.3) (2021-07-01)
+
+
+### Bug Fixes
+
+* add ability to use dashes in path names ([e1d3432](https://github.com/kouts/vue-set-path/commit/e1d34321b3171e473e537c53b52e4da46a00cd0c))
+
 ## [1.1.2](https://github.com/kouts/vue-set-path/compare/v1.1.1...v1.1.2) (2021-05-13)
 
 
