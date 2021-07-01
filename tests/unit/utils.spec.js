@@ -128,6 +128,13 @@ describe('splitPath', () => {
     const res = splitPath(path)
     expect(res).toEqual(pathArr)
   })
+
+  it('returns the correct value when path has dashes in name', () => {
+    const path = 'foo-dash[0].baz-double-dash.qux[1]'
+    const pathArr = ['foo-dash', '0', 'baz-double-dash', 'qux', '1']
+    const res = splitPath(path)
+    expect(res).toEqual(pathArr)
+  })
 })
 
 describe('getByPath', () => {

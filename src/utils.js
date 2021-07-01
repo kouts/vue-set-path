@@ -11,7 +11,7 @@ export function isArray(arr) {
 }
 
 export function splitPath(str) {
-  const regex = /(\w+)|\[([^\]]+)\]/g
+  const regex = /([\w-]+)|\[([^\]]+)\]/g
   const result = []
   let path
 
