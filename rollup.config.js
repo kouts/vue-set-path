@@ -1,6 +1,7 @@
 import babel from '@rollup/plugin-babel'
 import { terser } from 'rollup-plugin-terser'
 import { nodeResolve } from '@rollup/plugin-node-resolve'
+import del from 'rollup-plugin-delete'
 
 const globals = {
   vue: 'Vue'
@@ -33,7 +34,7 @@ const rollupConfigModules = [
         dir: 'dist/cjs'
       }
     ],
-    plugins: [nodeResolve(), babel(babelOptions)]
+    plugins: [del({ targets: 'dist/*' }), nodeResolve(), babel(babelOptions)]
   }
 ]
 

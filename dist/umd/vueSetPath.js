@@ -34,7 +34,7 @@
     return Array.isArray(arr);
   }
   function splitPath(str) {
-    var regex = /(\w+)|\[([^\]]+)\]/g;
+    var regex = /([\w-]+)|\[([^\]]+)\]/g;
     var result = [];
     var path;
 
