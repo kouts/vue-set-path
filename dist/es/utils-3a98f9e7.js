@@ -24,7 +24,7 @@ function isArray(arr) {
   return Array.isArray(arr);
 }
 function splitPath(str) {
-  var regex = /(\w+)|\[([^\]]+)\]/g;
+  var regex = /([\w-]+)|\[([^\]]+)\]/g;
   var result = [];
   var path;
 
@@ -39,7 +39,7 @@ function splitPath(str) {
   return result;
 }
 function getByPath(obj, path) {
-  var parts = splitPath(path);
+  var parts = isArray(path) ? path : splitPath(path);
   var length = parts.length;
 
   for (var i = 0; i < length; i++) {
