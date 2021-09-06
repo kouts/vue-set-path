@@ -1,3 +1,10 @@
+## [1.1.5](https://github.com/kouts/vue-set-path/compare/v1.1.4...v1.1.5) (2021-09-06)
+
+
+### Bug Fixes
+
+* add ability to use spaces in path names ([a68e812](https://github.com/kouts/vue-set-path/commit/a68e81221b15944db7b89033bd82a92682285a05))
+
 ## [1.1.4](https://github.com/kouts/vue-set-path/compare/v1.1.3...v1.1.4) (2021-07-15)
 
 
