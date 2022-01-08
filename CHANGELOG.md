@@ -1,3 +1,11 @@
+## [1.1.6](https://github.com/kouts/vue-set-path/compare/v1.1.5...v1.1.6) (2022-01-08)
+
+
+### Bug Fixes
+
+* add dist to git assets ([937e325](https://github.com/kouts/vue-set-path/commit/937e325829afbe1ba94f6d6a5e03f57fb996406d))
+* added coverage badge ([482b184](https://github.com/kouts/vue-set-path/commit/482b184e67879ed31e2c4b0c5ccfdd83b9cfbe60))
+
 ## [1.1.5](https://github.com/kouts/vue-set-path/compare/v1.1.4...v1.1.5) (2021-09-06)
 
 

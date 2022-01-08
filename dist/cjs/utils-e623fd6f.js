@@ -1,3 +1,5 @@
+'use strict';
+
 function _typeof(obj) {
   "@babel/helpers - typeof";
 
@@ -24,7 +26,7 @@ function isArray(arr) {
   return Array.isArray(arr);
 }
 function splitPath(str) {
-  var regex = /([\w-]+)|\[([^\]]+)\]/g;
+  var regex = /([\w\s-]+)|\[([^\]]+)\]/g;
   var result = [];
   var path;
 
@@ -53,4 +55,9 @@ function getByPath(obj, path) {
   return obj;
 }
 
-export { _typeof as _, isNumeric as a, isArray as b, getByPath as g, isObject as i, splitPath as s };
+exports._typeof = _typeof;
+exports.getByPath = getByPath;
+exports.isArray = isArray;
+exports.isNumeric = isNumeric;
+exports.isObject = isObject;
+exports.splitPath = splitPath;
