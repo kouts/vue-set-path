@@ -64,6 +64,14 @@ describe('setOne', () => {
     setOne(obj, 'foo.bar.baz', { test: 'test' })
     expect(obj.foo.bar.baz).toEqual({ test: 'test' })
   })
+
+  it('transforms an array property to an object', () => {
+    obj.foo = [1, 2, 3]
+    setOne(obj, 'foo.cat.dog', { test: 'test' })
+    expect(obj.foo.cat.dog).toEqual({
+      test: 'test'
+    })
+  })
 })
 
 describe('setMany', () => {
@@ -202,5 +210,18 @@ describe('deleteMany', () => {
     expect(obj.arr.length).toBe(2)
     expect(obj.arr[1].name).toBeUndefined()
     expect(obj.arr[1]).toEqual({ age: 23 })
+  })
+
+  it('deletes an object property given one string path', () => {
+    deleteMany(obj, 'arr')
+    expect(obj.arr).not.toBeDefined()
+  })
+
+  it('throws an error when path is not a string or array', () => {
+    const test = () => {
+      deleteMany(obj, 2)
+    }
+
+    expect(test).toThrow('Arguments must be either string or array.')
   })
 })

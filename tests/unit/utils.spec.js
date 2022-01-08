@@ -137,8 +137,8 @@ describe('splitPath', () => {
   })
 
   it('returns the correct value when path has spaces in name', () => {
-    const path = 'foo-dash[0].baz-double-dash.qux.space inside'
-    const pathArr = ['foo-dash', '0', 'baz-double-dash', 'qux', 'space inside']
+    const path = 'foo-dash[0].baz-double-dash.qux[space inside].test'
+    const pathArr = ['foo-dash', '0', 'baz-double-dash', 'qux', 'space inside', 'test']
     const res = splitPath(path)
     expect(res).toEqual(pathArr)
   })
