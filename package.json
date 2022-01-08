@@ -23,6 +23,7 @@
   "scripts": {
     "prepare": "husky install",
     "test:unit": "vue-cli-service test:unit",
+    "test:unit-coverage": "vue-cli-service test:unit --coverage && make-coverage-badge",
     "build": "rollup -c",
     "lint": "eslint . --ext .js,.vue",
     "lint-fix": "eslint . --fix --ext .js,.vue"
@@ -54,6 +55,7 @@
     "eslint-plugin-vue": "^7.13.0",
     "husky": "^7.0.1",
     "lint-staged": "^11.0.1",
+    "make-coverage-badge": "^1.2.0",
     "prettier": "2.3.2",
     "rollup": "^2.53.2",
     "rollup-plugin-delete": "^2.0.0",
