@@ -2,7 +2,7 @@
   typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('vue')) :
   typeof define === 'function' && define.amd ? define(['exports', 'vue'], factory) :
   (global = typeof globalThis !== 'undefined' ? globalThis : global || self, factory(global.vueSetPath = {}, global.Vue));
-}(this, (function (exports, Vue) { 'use strict';
+})(this, (function (exports, Vue) { 'use strict';
 
   function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
 
@@ -11,17 +11,11 @@
   function _typeof(obj) {
     "@babel/helpers - typeof";
 
-    if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") {
-      _typeof = function (obj) {
-        return typeof obj;
-      };
-    } else {
-      _typeof = function (obj) {
-        return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj;
-      };
-    }
-
-    return _typeof(obj);
+    return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) {
+      return typeof obj;
+    } : function (obj) {
+      return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj;
+    }, _typeof(obj);
   }
 
   function isObject(obj) {
@@ -78,27 +72,27 @@
         if (objValue && _typeof(objValue) === 'object') {
           // eslint-disable-next-line no-prototype-builtins
           if (!objValue.hasOwnProperty('__ob__')) {
-            Vue__default['default'].set(obj, prop, objValue);
+            Vue__default["default"].set(obj, prop, objValue);
           } // Array to object transformation
           // Check if parent path is an array, we are not on the last item
           // and the next key in the path is not a number
 
 
           if (isArray(objValue) && !isNumeric(path[index + 1])) {
-            Vue__default['default'].set(obj, prop, {});
+            Vue__default["default"].set(obj, prop, {});
           }
         } else {
           // Create an empty object or an empty array based on the next path entry
           if (isNumeric(path[index + 1])) {
-            Vue__default['default'].set(obj, prop, []);
+            Vue__default["default"].set(obj, prop, []);
           } else {
-            Vue__default['default'].set(obj, prop, {});
+            Vue__default["default"].set(obj, prop, {});
           }
         }
       } else {
         // If we are on the last index then we just assign the the value to the data object
         // Note: If we used obj[prop] = value; arrays wouldn't be updated.
-        Vue__default['default'].set(obj, prop, value);
+        Vue__default["default"].set(obj, prop, value);
       }
 
       obj = obj[prop];
@@ -118,7 +112,7 @@
   var deleteOne = function deleteOne(obj, pathStr) {
     var path = splitPath(pathStr);
     var prop = path.pop();
-    Vue__default['default']["delete"](getByPath(obj, path), prop);
+    Vue__default["default"]["delete"](getByPath(obj, path), prop);
   };
   var deleteMany = function deleteMany(obj, path) {
     if (typeof path === 'string') {
@@ -139,4 +133,4 @@
 
   Object.defineProperty(exports, '__esModule', { value: true });
 
-})));
+}));

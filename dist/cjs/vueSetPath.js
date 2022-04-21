@@ -2,7 +2,7 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
-var utils = require('./utils-e623fd6f.js');
+var utils = require('./utils-5fd5ff73.js');
 var Vue = require('vue');
 
 function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
@@ -24,27 +24,27 @@ var setOne = function setOne(obj, pathStr, value) {
       if (objValue && utils._typeof(objValue) === 'object') {
         // eslint-disable-next-line no-prototype-builtins
         if (!objValue.hasOwnProperty('__ob__')) {
-          Vue__default['default'].set(obj, prop, objValue);
+          Vue__default["default"].set(obj, prop, objValue);
         } // Array to object transformation
         // Check if parent path is an array, we are not on the last item
         // and the next key in the path is not a number
 
 
         if (utils.isArray(objValue) && !utils.isNumeric(path[index + 1])) {
-          Vue__default['default'].set(obj, prop, {});
+          Vue__default["default"].set(obj, prop, {});
         }
       } else {
         // Create an empty object or an empty array based on the next path entry
         if (utils.isNumeric(path[index + 1])) {
-          Vue__default['default'].set(obj, prop, []);
+          Vue__default["default"].set(obj, prop, []);
         } else {
-          Vue__default['default'].set(obj, prop, {});
+          Vue__default["default"].set(obj, prop, {});
         }
       }
     } else {
       // If we are on the last index then we just assign the the value to the data object
       // Note: If we used obj[prop] = value; arrays wouldn't be updated.
-      Vue__default['default'].set(obj, prop, value);
+      Vue__default["default"].set(obj, prop, value);
     }
 
     obj = obj[prop];
@@ -64,7 +64,7 @@ var setMany = function setMany(obj, path, value) {
 var deleteOne = function deleteOne(obj, pathStr) {
   var path = utils.splitPath(pathStr);
   var prop = path.pop();
-  Vue__default['default']["delete"](utils.getByPath(obj, path), prop);
+  Vue__default["default"]["delete"](utils.getByPath(obj, path), prop);
 };
 var deleteMany = function deleteMany(obj, path) {
   if (typeof path === 'string') {
