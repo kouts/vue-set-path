@@ -1,3 +1,11 @@
+## [1.1.8](https://github.com/kouts/vue-set-path/compare/v1.1.7...v1.1.8) (2022-05-07)
+
+
+### Bug Fixes
+
+* fixed terser options ([2598796](https://github.com/kouts/vue-set-path/commit/25987967d460d1439d754e5b57a39bbfdab687fc))
+* updated eslint confing and npm packages ([f3d542f](https://github.com/kouts/vue-set-path/commit/f3d542fd7ce158c24df0b12e40707d8ba43e7eab))
+
 ## [1.1.7](https://github.com/kouts/vue-set-path/compare/v1.1.6...v1.1.7) (2022-04-21)
 
 
