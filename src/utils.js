@@ -29,11 +29,13 @@ export function splitPath(str) {
 export function getByPath(obj, path) {
   const parts = isArray(path) ? path : splitPath(path)
   const length = parts.length
+
   for (let i = 0; i < length; i++) {
     if (typeof obj[parts[i]] === 'undefined') {
       return undefined
     }
     obj = obj[parts[i]]
   }
+
   return obj
 }

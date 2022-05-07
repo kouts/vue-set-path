@@ -1,7 +1,8 @@
-import { setOne, setMany, deleteOne, deleteMany } from '@/vueSetPath'
+import { deleteMany, deleteOne, setMany, setOne } from '@/vueSetPath'
 
 describe('setOne', () => {
   let obj
+
   beforeEach(() => {
     obj = {
       foo: {
@@ -76,6 +77,7 @@ describe('setOne', () => {
 
 describe('setMany', () => {
   let obj
+
   beforeEach(() => {
     obj = {
       foo: {
@@ -116,12 +118,14 @@ describe('setMany', () => {
     const fn = () => {
       setMany(obj, 10)
     }
+
     expect(fn).toThrow(Error)
   })
 })
 
 describe('deleteOne', () => {
   let obj
+
   beforeEach(() => {
     obj = {
       foo: {
@@ -174,6 +178,7 @@ describe('deleteOne', () => {
 
 describe('deleteMany', () => {
   let obj
+
   beforeEach(() => {
     obj = {
       foo: {

@@ -1,5 +1,5 @@
 import Vue from 'vue'
-import { isNumeric, isArray, isObject, splitPath, getByPath } from './utils.js'
+import { getByPath, isArray, isNumeric, isObject, splitPath } from './utils.js'
 
 export const setOne = (obj, pathStr, value) => {
   const path = splitPath(pathStr)
@@ -8,10 +8,12 @@ export const setOne = (obj, pathStr, value) => {
 
   for (let index = 0; index < length; index++) {
     const prop = path[index]
+
     // If we are not on the last index
     // we start building the data object from the path
     if (index !== lastIndex) {
       const objValue = obj[prop]
+
       // If objValue exists, is not primitive and is not observable, then make it so using Vue.set
       if (objValue && typeof objValue === 'object') {
         // eslint-disable-next-line no-prototype-builtins
@@ -56,6 +58,7 @@ export const setMany = (obj, path, value) => {
 export const deleteOne = (obj, pathStr) => {
   const path = splitPath(pathStr)
   const prop = path.pop()
+
   Vue.delete(getByPath(obj, path), prop)
 }
 
