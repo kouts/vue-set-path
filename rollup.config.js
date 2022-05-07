@@ -47,7 +47,15 @@ const rollupConfigsUmd = ['vueSetPath', 'utils'].map((name) => ({
       file: `dist/umd/${name}.js`,
       name,
       globals
-    },
+    }
+  ],
+  plugins: [nodeResolve(), babel(babelOptions)]
+}))
+
+const rollupConfigsUmdMin = ['vueSetPath', 'utils'].map((name) => ({
+  input: `src/${name}.js`,
+  external: ['vue'],
+  output: [
     {
       format: 'umd',
       file: `dist/umd/${name}.min.js`,
@@ -55,15 +63,9 @@ const rollupConfigsUmd = ['vueSetPath', 'utils'].map((name) => ({
       globals
     }
   ],
-  plugins: [
-    nodeResolve(),
-    babel(babelOptions),
-    terser({
-      include: [/^.+\.min\.js$/]
-    })
-  ]
+  plugins: [nodeResolve(), babel(babelOptions), terser()]
 }))
 
-const rollupConfig = rollupConfigModules.concat(rollupConfigsUmd)
+const rollupConfig = rollupConfigModules.concat(rollupConfigsUmd, rollupConfigsUmdMin)
 
 export default rollupConfig
