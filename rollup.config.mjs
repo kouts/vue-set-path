@@ -1,7 +1,7 @@
 import babel from '@rollup/plugin-babel'
 import del from 'rollup-plugin-delete'
+import terser from '@rollup/plugin-terser'
 import { nodeResolve } from '@rollup/plugin-node-resolve'
-import { terser } from 'rollup-plugin-terser'
 
 const globals = {
   vue: 'Vue'
