@@ -1,27 +1,27 @@
-import { s as splitPath, _ as _typeof, b as isArray, a as isNumeric, i as isObject, g as getByPath } from './utils-037a2bb8.js';
+import { s as splitPath, _ as _typeof, b as isArray, a as isNumeric, i as isObject, g as getByPath } from './utils-9cb6ed77.js';
 import Vue from 'vue';
 
 var setOne = function setOne(obj, pathStr, value) {
   var path = splitPath(pathStr);
   var length = path.length;
   var lastIndex = length - 1;
-
   for (var index = 0; index < length; index++) {
-    var prop = path[index]; // If we are not on the last index
+    var prop = path[index];
+
+    // If we are not on the last index
     // we start building the data object from the path
-
     if (index !== lastIndex) {
-      var objValue = obj[prop]; // If objValue exists, is not primitive and is not observable, then make it so using Vue.set
+      var objValue = obj[prop];
 
+      // If objValue exists, is not primitive and is not observable, then make it so using Vue.set
       if (objValue && _typeof(objValue) === 'object') {
         // eslint-disable-next-line no-prototype-builtins
         if (!objValue.hasOwnProperty('__ob__')) {
           Vue.set(obj, prop, objValue);
-        } // Array to object transformation
+        }
+        // Array to object transformation
         // Check if parent path is an array, we are not on the last item
         // and the next key in the path is not a number
-
-
         if (isArray(objValue) && !isNumeric(path[index + 1])) {
           Vue.set(obj, prop, {});
         }
@@ -38,7 +38,6 @@ var setOne = function setOne(obj, pathStr, value) {
       // Note: If we used obj[prop] = value; arrays wouldn't be updated.
       Vue.set(obj, prop, value);
     }
-
     obj = obj[prop];
   }
 };
