@@ -1,3 +1,10 @@
+## [1.1.10](https://github.com/kouts/vue-set-path/compare/v1.1.9...v1.1.10) (2022-11-07)
+
+
+### Bug Fixes
+
+* updated eslint config, rollup and npm packages ([21eb6c1](https://github.com/kouts/vue-set-path/commit/21eb6c1390feb17565a755ebc73790626008d7bd))
+
 ## [1.1.9](https://github.com/kouts/vue-set-path/compare/v1.1.8...v1.1.9) (2022-07-23)
 
 
