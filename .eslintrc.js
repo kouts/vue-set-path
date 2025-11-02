@@ -1,3 +1,3 @@
 module.exports = {
-  extends: ['@kouts/eslint-config/vue2']
+  extends: ['@kouts/eslint-config/vue2'],
 }

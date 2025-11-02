@@ -1,10 +1,10 @@
 import babel from '@rollup/plugin-babel'
-import del from 'rollup-plugin-delete'
-import terser from '@rollup/plugin-terser'
 import { nodeResolve } from '@rollup/plugin-node-resolve'
+import terser from '@rollup/plugin-terser'
+import del from 'rollup-plugin-delete'
 
 const globals = {
-  vue: 'Vue'
+  vue: 'Vue',
 }
 
 const babelOptions = {
@@ -14,10 +14,10 @@ const babelOptions = {
       '@vue/cli-plugin-babel/preset',
       {
         useBuiltIns: false,
-        modules: false
-      }
-    ]
-  ]
+        modules: false,
+      },
+    ],
+  ],
 }
 
 const rollupConfigModules = [
@@ -27,15 +27,15 @@ const rollupConfigModules = [
     output: [
       {
         format: 'es',
-        dir: 'dist/es'
+        dir: 'dist/es',
       },
       {
         format: 'cjs',
-        dir: 'dist/cjs'
-      }
+        dir: 'dist/cjs',
+      },
     ],
-    plugins: [del({ targets: 'dist/*' }), nodeResolve(), babel(babelOptions)]
-  }
+    plugins: [del({ targets: 'dist/*' }), nodeResolve(), babel(babelOptions)],
+  },
 ]
 
 const rollupConfigsUmd = ['vueSetPath', 'utils'].map((name) => ({
@@ -46,10 +46,10 @@ const rollupConfigsUmd = ['vueSetPath', 'utils'].map((name) => ({
       format: 'umd',
       file: `dist/umd/${name}.js`,
       name,
-      globals
-    }
+      globals,
+    },
   ],
-  plugins: [nodeResolve(), babel(babelOptions)]
+  plugins: [nodeResolve(), babel(babelOptions)],
 }))
 
 const rollupConfigsUmdMin = ['vueSetPath', 'utils'].map((name) => ({
@@ -60,10 +60,10 @@ const rollupConfigsUmdMin = ['vueSetPath', 'utils'].map((name) => ({
       format: 'umd',
       file: `dist/umd/${name}.min.js`,
       name,
-      globals
-    }
+      globals,
+    },
   ],
-  plugins: [nodeResolve(), babel(babelOptions), terser()]
+  plugins: [nodeResolve(), babel(babelOptions), terser()],
 }))
 
 const rollupConfig = rollupConfigModules.concat(rollupConfigsUmd, rollupConfigsUmdMin)
