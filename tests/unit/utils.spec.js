@@ -174,19 +174,19 @@ describe('getByPath', () => {
       bar: 'test',
       baz: [
         {
-          qux: 'test'
-        }
+          qux: 'test',
+        },
       ],
       notDefined: undefined,
       nested: {
         personalInfo: {
           name: 'John Doe',
           address: {
-            line1: 'Westwish St'
-          }
-        }
-      }
-    }
+            line1: 'Westwish St',
+          },
+        },
+      },
+    },
   }
 
   it('returns the correct value for dot notation syntax', () => {
