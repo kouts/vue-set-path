@@ -1,3 +1,11 @@
+## [1.1.11](https://github.com/kouts/vue-set-path/compare/v1.1.10...v1.1.11) (2025-11-02)
+
+
+### Bug Fixes
+
+* updated node and npm packages ([e919459](https://github.com/kouts/vue-set-path/commit/e919459367d6f6185ff5b4796c1b0e572b764be0))
+* updated node and npm packages ([38d64cb](https://github.com/kouts/vue-set-path/commit/38d64cb12be1e428bc55c8e42f05c9e529c2a73d))
+
 ## [1.1.10](https://github.com/kouts/vue-set-path/compare/v1.1.9...v1.1.10) (2022-11-07)
 
 
