@@ -7,14 +7,14 @@ describe('setOne', () => {
     obj = {
       foo: {
         bar: {
-          baz: 'test'
-        }
+          baz: 'test',
+        },
       },
       arr: [
         {
-          name: 'John'
-        }
-      ]
+          name: 'John',
+        },
+      ],
     }
   })
 
@@ -53,11 +53,11 @@ describe('setOne', () => {
     setOne(obj, 'arr.1', { name: 'George' })
     expect(obj.arr).toEqual([
       {
-        name: 'John'
+        name: 'John',
       },
       {
-        name: 'George'
-      }
+        name: 'George',
+      },
     ])
   })
 
@@ -70,7 +70,7 @@ describe('setOne', () => {
     obj.foo = [1, 2, 3]
     setOne(obj, 'foo.cat.dog', { test: 'test' })
     expect(obj.foo.cat.dog).toEqual({
-      test: 'test'
+      test: 'test',
     })
   })
 })
@@ -82,14 +82,14 @@ describe('setMany', () => {
     obj = {
       foo: {
         bar: {
-          baz: 'test'
-        }
+          baz: 'test',
+        },
       },
       arr: [
         {
-          name: 'John'
-        }
-      ]
+          name: 'John',
+        },
+      ],
     }
   })
 
@@ -101,16 +101,16 @@ describe('setMany', () => {
   it('sets multiple properies when input is an object', () => {
     setMany(obj, {
       'foo.bar.baz': 'changed',
-      'arr.1': { name: 'George' }
+      'arr.1': { name: 'George' },
     })
     expect(obj.foo.bar.baz).toBe('changed')
     expect(obj.arr).toEqual([
       {
-        name: 'John'
+        name: 'John',
       },
       {
-        name: 'George'
-      }
+        name: 'George',
+      },
     ])
   })
 
@@ -130,23 +130,23 @@ describe('deleteOne', () => {
     obj = {
       foo: {
         bar: {
-          baz: 'test'
-        }
+          baz: 'test',
+        },
       },
       arr: [
         {
           name: 'John',
-          age: 21
+          age: 21,
         },
         {
           name: 'George',
-          age: 22
+          age: 22,
         },
         {
           name: 'Nick',
-          age: 23
-        }
-      ]
+          age: 23,
+        },
+      ],
     }
   })
 
@@ -185,26 +185,26 @@ describe('deleteMany', () => {
         bar: {
           baz: 'test1',
           biz: 'test2',
-          boz: 'test3'
+          boz: 'test3',
         },
         far: {
-          faz: 'test1'
-        }
+          faz: 'test1',
+        },
       },
       arr: [
         {
           name: 'John',
-          age: 21
+          age: 21,
         },
         {
           name: 'George',
-          age: 22
+          age: 22,
         },
         {
           name: 'Nick',
-          age: 23
-        }
-      ]
+          age: 23,
+        },
+      ],
     }
   })
 
