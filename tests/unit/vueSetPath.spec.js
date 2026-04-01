@@ -123,6 +123,69 @@ describe('setMany', () => {
   })
 })
 
+describe('prototype pollution safeguards', () => {
+  let obj
+
+  beforeEach(() => {
+    obj = {}
+    delete Object.prototype.polluted
+    delete Object.prototype.isAdmin
+  })
+
+  afterEach(() => {
+    delete Object.prototype.polluted
+    delete Object.prototype.isAdmin
+  })
+
+  it('throws on unsafe key in setOne root segment', () => {
+    const fn = () => {
+      setOne(obj, '__proto__.polluted', 'yes')
+    }
+
+    expect(fn).toThrow('Path contains unsafe keys.')
+    expect({}.polluted).toBeUndefined()
+  })
+
+  it('throws on unsafe key in setOne nested segment', () => {
+    const fn = () => {
+      setOne(obj, 'a.__proto__.isAdmin', true)
+    }
+
+    expect(fn).toThrow('Path contains unsafe keys.')
+    expect({}.isAdmin).toBeUndefined()
+  })
+
+  it('throws on constructor.prototype chain in setOne', () => {
+    const fn = () => {
+      setOne(obj, 'constructor.prototype.polluted', 'yes')
+    }
+
+    expect(fn).toThrow('Path contains unsafe keys.')
+    expect({}.polluted).toBeUndefined()
+  })
+
+  it('throws on unsafe key in setMany string input', () => {
+    const fn = () => {
+      setMany(obj, '__proto__.polluted', 'yes')
+    }
+
+    expect(fn).toThrow('Path contains unsafe keys.')
+    expect({}.polluted).toBeUndefined()
+  })
+
+  it('throws on unsafe key in setMany object input', () => {
+    const fn = () => {
+      setMany(obj, {
+        'safe.path': 'ok',
+        'a.__proto__.polluted': 'yes',
+      })
+    }
+
+    expect(fn).toThrow('Path contains unsafe keys.')
+    expect({}.polluted).toBeUndefined()
+  })
+})
+
 describe('deleteOne', () => {
   let obj
 
@@ -148,6 +211,12 @@ describe('deleteOne', () => {
         },
       ],
     }
+
+    delete Object.prototype.polluted
+  })
+
+  afterEach(() => {
+    delete Object.prototype.polluted
   })
 
   it('deletes an object property', () => {
@@ -173,6 +242,15 @@ describe('deleteOne', () => {
     deleteOne(obj, 'arr[1].age')
     expect(obj.arr.length).toBe(3)
     expect(obj.arr[1]).toEqual({ name: 'George' })
+  })
+
+  it('throws on unsafe key path', () => {
+    const fn = () => {
+      deleteOne(obj, '__proto__.polluted')
+    }
+
+    expect(fn).toThrow('Path contains unsafe keys.')
+    expect({}.polluted).toBeUndefined()
   })
 })
 
@@ -206,6 +284,12 @@ describe('deleteMany', () => {
         },
       ],
     }
+
+    delete Object.prototype.polluted
+  })
+
+  afterEach(() => {
+    delete Object.prototype.polluted
   })
 
   it('deletes both object properties and array items', () => {
@@ -228,5 +312,23 @@ describe('deleteMany', () => {
     }
 
     expect(test).toThrow('Arguments must be either string or array.')
+  })
+
+  it('throws on unsafe key path when input is string', () => {
+    const fn = () => {
+      deleteMany(obj, '__proto__.polluted')
+    }
+
+    expect(fn).toThrow('Path contains unsafe keys.')
+    expect({}.polluted).toBeUndefined()
+  })
+
+  it('throws on unsafe key path when input is array', () => {
+    const fn = () => {
+      deleteMany(obj, ['foo.bar.baz', 'a.__proto__.polluted'])
+    }
+
+    expect(fn).toThrow('Path contains unsafe keys.')
+    expect({}.polluted).toBeUndefined()
   })
 })

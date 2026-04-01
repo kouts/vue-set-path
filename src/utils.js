@@ -10,6 +10,32 @@ export function isArray(arr) {
   return Array.isArray(arr)
 }
 
+export const UNSAFE_KEYS = Object.freeze(
+  (() => {
+    const keys = Object.create(null)
+
+    ;['__proto__', 'constructor', 'prototype'].forEach((unsafeKey) => {
+      keys[unsafeKey] = true
+    })
+
+    return keys
+  })(),
+)
+
+export function isUnsafeKey(key) {
+  return Object.prototype.hasOwnProperty.call(UNSAFE_KEYS, String(key))
+}
+
+export function assertSafePath(path) {
+  const parts = isArray(path) ? path : splitPath(path)
+
+  if (parts.some(isUnsafeKey)) {
+    throw Error('Path contains unsafe keys.')
+  }
+
+  return parts
+}
+
 export function splitPath(str) {
   const regex = /([\w\s-]+)|\[([^\]]+)\]/g
   const result = []

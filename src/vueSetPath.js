@@ -1,8 +1,8 @@
 import Vue from 'vue'
-import { getByPath, isArray, isNumeric, isObject, splitPath } from './utils.js'
+import { assertSafePath, getByPath, isArray, isNumeric, isObject } from './utils.js'
 
 export const setOne = (obj, pathStr, value) => {
-  const path = splitPath(pathStr)
+  const path = assertSafePath(pathStr)
   const length = path.length
   const lastIndex = length - 1
 
@@ -56,7 +56,7 @@ export const setMany = (obj, path, value) => {
 }
 
 export const deleteOne = (obj, pathStr) => {
-  const path = splitPath(pathStr)
+  const path = assertSafePath(pathStr)
   const prop = path.pop()
 
   Vue.delete(getByPath(obj, path), prop)
