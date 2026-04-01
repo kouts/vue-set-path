@@ -23,6 +23,23 @@
   function isArray(arr) {
     return Array.isArray(arr);
   }
+  var UNSAFE_KEYS = Object.freeze(function () {
+    var keys = Object.create(null);
+    ['__proto__', 'constructor', 'prototype'].forEach(function (unsafeKey) {
+      keys[unsafeKey] = true;
+    });
+    return keys;
+  }());
+  function isUnsafeKey(key) {
+    return Object.prototype.hasOwnProperty.call(UNSAFE_KEYS, String(key));
+  }
+  function assertSafePath(path) {
+    var parts = isArray(path) ? path : splitPath(path);
+    if (parts.some(isUnsafeKey)) {
+      throw Error('Path contains unsafe keys.');
+    }
+    return parts;
+  }
   function splitPath(str) {
     var regex = /([\w\s-]+)|\[([^\]]+)\]/g;
     var result = [];
@@ -49,7 +66,7 @@
   }
 
   var setOne = function setOne(obj, pathStr, value) {
-    var path = splitPath(pathStr);
+    var path = assertSafePath(pathStr);
     var length = path.length;
     var lastIndex = length - 1;
     for (var index = 0; index < length; index++) {
@@ -100,7 +117,7 @@
     }
   };
   var deleteOne = function deleteOne(obj, pathStr) {
-    var path = splitPath(pathStr);
+    var path = assertSafePath(pathStr);
     var prop = path.pop();
     Vue["delete"](getByPath(obj, path), prop);
   };

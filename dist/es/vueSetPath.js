@@ -1,8 +1,8 @@
-import { b as isArray, s as splitPath, g as getByPath, i as isObject, _ as _typeof, a as isNumeric } from './utils-DDVzFRcw.js';
+import { b as isArray, d as assertSafePath, g as getByPath, i as isObject, _ as _typeof, a as isNumeric } from './utils-CXjS3MXW.js';
 import Vue from 'vue';
 
 var setOne = function setOne(obj, pathStr, value) {
-  var path = splitPath(pathStr);
+  var path = assertSafePath(pathStr);
   var length = path.length;
   var lastIndex = length - 1;
   for (var index = 0; index < length; index++) {
@@ -53,7 +53,7 @@ var setMany = function setMany(obj, path, value) {
   }
 };
 var deleteOne = function deleteOne(obj, pathStr) {
-  var path = splitPath(pathStr);
+  var path = assertSafePath(pathStr);
   var prop = path.pop();
   Vue["delete"](getByPath(obj, path), prop);
 };

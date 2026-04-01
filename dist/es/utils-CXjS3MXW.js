@@ -17,6 +17,23 @@ function isNumeric(str) {
 function isArray(arr) {
   return Array.isArray(arr);
 }
+var UNSAFE_KEYS = Object.freeze(function () {
+  var keys = Object.create(null);
+  ['__proto__', 'constructor', 'prototype'].forEach(function (unsafeKey) {
+    keys[unsafeKey] = true;
+  });
+  return keys;
+}());
+function isUnsafeKey(key) {
+  return Object.prototype.hasOwnProperty.call(UNSAFE_KEYS, String(key));
+}
+function assertSafePath(path) {
+  var parts = isArray(path) ? path : splitPath(path);
+  if (parts.some(isUnsafeKey)) {
+    throw Error('Path contains unsafe keys.');
+  }
+  return parts;
+}
 function splitPath(str) {
   var regex = /([\w\s-]+)|\[([^\]]+)\]/g;
   var result = [];
@@ -42,4 +59,4 @@ function getByPath(obj, path) {
   return obj;
 }
 
-export { _typeof as _, isNumeric as a, isArray as b, getByPath as g, isObject as i, splitPath as s };
+export { UNSAFE_KEYS as U, _typeof as _, isNumeric as a, isArray as b, isUnsafeKey as c, assertSafePath as d, getByPath as g, isObject as i, splitPath as s };

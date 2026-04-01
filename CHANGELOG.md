@@ -1,3 +1,10 @@
+## [1.1.12](https://github.com/kouts/vue-set-path/compare/v1.1.11...v1.1.12) (2026-04-01)
+
+
+### Bug Fixes
+
+* implement prototype pollution safeguards in setOne, setMany, and deleteOne functions ([e08d05b](https://github.com/kouts/vue-set-path/commit/e08d05ba76dc6b6710b5018cd25b4d591549afdb))
+
 ## [1.1.11](https://github.com/kouts/vue-set-path/compare/v1.1.10...v1.1.11) (2025-11-02)
 
 

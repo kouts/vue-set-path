@@ -1,10 +1,10 @@
 'use strict';
 
-var utils = require('./utils-Dx3b-ykJ.js');
+var utils = require('./utils-DAOzTXpc.js');
 var Vue = require('vue');
 
 var setOne = function setOne(obj, pathStr, value) {
-  var path = utils.splitPath(pathStr);
+  var path = utils.assertSafePath(pathStr);
   var length = path.length;
   var lastIndex = length - 1;
   for (var index = 0; index < length; index++) {
@@ -55,7 +55,7 @@ var setMany = function setMany(obj, path, value) {
   }
 };
 var deleteOne = function deleteOne(obj, pathStr) {
-  var path = utils.splitPath(pathStr);
+  var path = utils.assertSafePath(pathStr);
   var prop = path.pop();
   Vue["delete"](utils.getByPath(obj, path), prop);
 };
